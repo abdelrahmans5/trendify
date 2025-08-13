@@ -1,0 +1,16 @@
+* {
+    font-family: "Playwrite HU", cursive;
+    font-optical-sizing: auto;
+}
+
+/* Smooth scrolling offset for fixed navbar */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Add padding-top to sections to account for fixed navbar */
+section[id],
+header[id] {
+    scroll-margin-top: 20px;
+    /* Adjust this value based on your navbar height */
+}

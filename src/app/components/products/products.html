@@ -1,0 +1,83 @@
+<section id="products" class="py-30 bg-section/40">
+    <div class="container mx-auto">
+        <div class="main-text text-center">
+            <h2
+                class="text-5xl text-amber-900 font-bold after:w-20 drop-shadow-sm drop-shadow-orange-600/70 after:h-0.5 after:absolute after:start-1/2 after:top-[120%] after:-translate-x-1/2 after:z-10 after:bg-main relative text-main">
+                Products
+            </h2>
+            <p class="text-textMain mt-6 text-xl">Best Selling Product</p>
+        </div>
+
+        <div class="products-items mt-10 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            @for (product of productsData; track product.id) {
+            <div class="item shadow-sm bg-white rounded p-2">
+                <div class="h-3/4 overflow-hidden flex">
+                    <img [src]="product.image" loading="lazy" class="w-full rounded" alt="{{ product.title }}" />
+                </div>
+                <div class="item-caption">
+                    <h3 class="text-xl my-3">{{ product.title }}</h3>
+                    <div class="flex space-x-1 items-center">
+                        <span><i class="fas fa-star text-yellow-400"></i></span> <span class="text-xs">{{
+                            product.rating.rate }}</span>
+                        <span class="text-gray-600 text-xs">(500+)</span>
+                    </div>
+                    <div class="discount">
+                        <span class="text-main">{{ (product.price - (product.price * 0.5))*100 }} </span>
+                        <span class="line-through text-gray-500">{{ product.price * 100 }} EGP</span>
+                    </div>
+                </div>
+            </div>
+            }
+
+        </div>
+    </div>
+</section>
+
+<!-- See More / Load More Section -->
+<div class="load-more-section flex justify-center my-3">
+    @if (!showMore) {
+    <button class="see-more-btn py-3 rounded-3xl bg-amber-900 w-1/4 text-white" (click)="loadMoreProducts()">
+        <i class="fas fa-plus"></i>
+        See More Products
+    </button>
+    }
+</div>
+
+<!-- Deferred More Products Section -->
+@if (showMore) {
+@defer (on immediate) {
+<div class="container mx-auto mb-6">
+    <div class="main-text text-center">
+        <hr class="text-amber-900">
+        <h2
+            class="text-5xl text-amber-900 font-bold py-4 after:w-20 drop-shadow-sm drop-shadow-orange-600/70 after:h-0.5 after:absolute after:start-1/2 after:top-[120%] after:-translate-x-1/2 after:z-10 after:bg-main relative text-main">
+            More Products
+        </h2>
+        <hr class="text-amber-900">
+    </div>
+
+    <div class="products-items mt-10 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        @for (product of moreData; track product.id) {
+        <div class="item shadow-sm bg-white rounded p-2">
+            <div class="h-3/4 overflow-hidden flex">
+                <img [src]="product.image" loading="lazy" class="w-full rounded" alt="{{ product.title }}" />
+            </div>
+            <div class="item-caption">
+                <h3 class="text-xl my-3">{{ product.title }}</h3>
+                <div class="flex space-x-1 items-center">
+                    <span><i class="fas fa-star text-yellow-400"></i></span> <span class="text-xs">{{
+                        product.rating.rate }}</span>
+                    <span class="text-gray-600 text-xs">(500+)</span>
+                </div>
+                <div class="discount">
+                    <span class="text-main">{{ (product.price - (product.price * 0.5))*100 }} </span>
+                    <span class="line-through text-gray-500">{{ product.price * 100 }} EGP</span>
+                </div>
+            </div>
+        </div>
+        }
+
+    </div>
+</div>
+}
+}

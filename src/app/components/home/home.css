@@ -1,0 +1,11 @@
+* {
+    font-family: "Playwrite HU", cursive;
+    font-optical-sizing: auto;
+}
+
+.home {
+    background-image: url("../../../../public/wraper-min.png");
+    background-position: center center;
+    background-size: cover;
+    height: 100vh;
+}

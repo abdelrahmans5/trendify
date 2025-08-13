@@ -1,0 +1,4 @@
+.item {
+    height: 600px;
+    transition: transform 0.3s;
+}
